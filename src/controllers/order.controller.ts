@@ -1,8 +1,10 @@
+import {authenticate} from '@loopback/authentication';
 import {Count, CountSchema, Filter, FilterExcludingWhere, repository, Where} from '@loopback/repository';
 import {del, get, getModelSchemaRef, param, patch, post, put, requestBody, response} from '@loopback/rest';
 import {Order} from '../models';
 import {OrderRepository} from '../repositories';
 
+@authenticate('jwt')
 export class OrderController {
   constructor(
     @repository(OrderRepository)
